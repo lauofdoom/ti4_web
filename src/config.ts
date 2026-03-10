@@ -26,7 +26,8 @@ const prodConfig = {
     websiteBase: import.meta.env.VITE_WEBSITE_BASE ?? "/",
     discordLoginUrl: import.meta.env.VITE_DISCORD_LOGIN_URL ?? "/auth/login",
     discordRedirectUri:
-      import.meta.env.VITE_DISCORD_REDIRECT_URI ?? "/login",
+      import.meta.env.VITE_DISCORD_REDIRECT_URI ??
+      `${window.location.origin}/login`,
     gameDataUrl: "/proxy/webdata",
     botApiUrl: "/bot/api",
     websocketUrl:
