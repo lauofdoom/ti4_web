@@ -1,5 +1,5 @@
 import { Text, Image, Stack } from "@mantine/core";
-import { PlayerData, Objectives, EntryType } from "@/entities/data/types";
+fiimport { PlayerData, Objectives, EntryType } from "@/entities/data/types";
 import { PlayerColor } from "@/domains/player/components/PlayerColor";
 import styles from "./PlayerScoreSummary.module.css";
 import legendStyles from "./PlayerScoreSummaryLegend.module.css";
