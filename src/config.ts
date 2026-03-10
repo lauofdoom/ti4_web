@@ -1,31 +1,37 @@
 const devConfig = {
   api: {
-    mapsUrl: "https://asyncti4.com/maps.json",
+    mapsUrl: "/proxy/maps.json",
     proxyMapsUrl: "/proxy/maps.json",
     frogMapUrl:
       "https://qw2j1lld43.execute-api.us-east-1.amazonaws.com/Production/frog",
-    websiteBase: "http://localhost:5173/",
-    discordLoginUrl: "http://localhost:8000/login",
-    discordRedirectUri: "http://localhost:5173/login",
-    gameDataUrl: "https://asyncti4.com/webdata",
+    websiteBase: import.meta.env.VITE_WEBSITE_BASE ?? "http://localhost:5173/",
+    discordLoginUrl:
+      import.meta.env.VITE_DISCORD_LOGIN_URL ?? "http://localhost:8000/login",
+    discordRedirectUri:
+      import.meta.env.VITE_DISCORD_REDIRECT_URI ??
+      "http://localhost:5173/login",
+    gameDataUrl: "/proxy/webdata",
     botApiUrl: "/bot/api",
-    websocketUrl: "wss://bot.asyncti4.com/ws",
-    // websocketUrl: "ws://localhost:8081/ws",
+    websocketUrl:
+      import.meta.env.VITE_WEBSOCKET_URL ?? "ws://192.168.1.116:8271/ws",
   },
 };
 
 const prodConfig = {
   api: {
-    mapsUrl: "https://asyncti4.com/maps.json",
+    mapsUrl: "/proxy/maps.json",
     proxyMapsUrl: "/proxy/maps.json",
     frogMapUrl:
       "https://qw2j1lld43.execute-api.us-east-1.amazonaws.com/Production/frog",
-    websiteBase: "https://asyncti4.com/",
-    discordLoginUrl: "https://api.asyncti4.com/login",
-    discordRedirectUri: "https://asyncti4.com/login",
-    gameDataUrl: "https://asyncti4.com/webdata",
-    botApiUrl: "https://bot.asyncti4.com/api",
-    websocketUrl: "wss://bot.asyncti4.com/ws",
+    websiteBase: import.meta.env.VITE_WEBSITE_BASE ?? "/",
+    discordLoginUrl: import.meta.env.VITE_DISCORD_LOGIN_URL ?? "/auth/login",
+    discordRedirectUri:
+      import.meta.env.VITE_DISCORD_REDIRECT_URI ?? "/login",
+    gameDataUrl: "/proxy/webdata",
+    botApiUrl: "/bot/api",
+    websocketUrl:
+      import.meta.env.VITE_WEBSOCKET_URL ??
+      `${window.location.protocol === "https:" ? "wss" : "ws"}://${window.location.host}/ws`,
   },
 };
 

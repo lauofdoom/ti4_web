@@ -23,19 +23,28 @@ export default defineConfig({
   server: {
     proxy: {
       "/bot": {
-        target: "https://bot.asyncti4.com",
+        target: process.env.VITE_BOT_API_URL ?? "http://192.168.1.116:8271",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/bot/, ""),
       },
       "/proxy": {
-        target: "https://asyncti4.com",
+        target: process.env.VITE_MAIN_API_URL ?? "http://192.168.1.116:8271",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/proxy/, ""),
+        rewrite: (path) => {
+          if (path === "/proxy/maps.json") return "/api/public/games";
+          const webdataMatch = path.match(/^\/proxy\/webdata\/([^/]+)\//);
+          if (webdataMatch) return `/api/public/game/${webdataMatch[1]}/webdata`;
+          return path.replace(/^\/proxy/, "");
+        },
       },
       "/auth": {
-        target: "http://127.0.0.1:8000",
+        target: process.env.VITE_AUTH_URL ?? "http://localhost:8000",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/auth/, ""),
+      },
+      "/images": {
+        target: process.env.VITE_BOT_API_URL ?? "http://192.168.1.116:8271",
+        changeOrigin: true,
       },
     },
   },

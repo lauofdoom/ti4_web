@@ -138,7 +138,7 @@ function NewMapUIContent({ pannable, onShowOldUI }: Props) {
               {isError && <PlayerDataErrorAlert gameId={gameId} mb="md" />}
 
               {data?.playerData && (
-                <SimpleGrid cols={{ base: 1, md: 2, xl2: 3 }} spacing="sm">
+                <SimpleGrid cols={{ base: 1, md: 2, xl: 3 }} spacing="sm">
                   {filterPlayersWithAssignedFaction(data.playerData).map(
                     (player) => (
                       <PlayerCard key={player.color} playerData={player} />

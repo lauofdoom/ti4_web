@@ -1,4 +1,4 @@
-import { Group, Text, Image, Stack, Flex } from "@mantine/core";
+import { Text, Image, Stack } from "@mantine/core";
 import { PlayerData, Objectives, EntryType } from "@/entities/data/types";
 import { PlayerColor } from "@/domains/player/components/PlayerColor";
 import styles from "./PlayerScoreSummary.module.css";
@@ -114,9 +114,9 @@ export function PlayerScoreSummary({ playerData, objectives }: Props) {
   const playerScoreBreakdowns = gameData?.playerScoreBreakdowns;
   const vpsToWin = gameData?.vpsToWin ?? 10;
 
-  if (!playerData || !objectives) return null;
-
   const factionImages = useFactionImages();
+
+  if (!playerData || !objectives) return null;
 
   const sortedPlayers = [...playerData].sort((a, b) => {
     const aInit = a.scs[0] || 99;
@@ -832,7 +832,7 @@ const fakeScoreBreakdown = {
     {
       userName: "Meme Philosopher",
       faction: "sol",
-      factionImage: "https://images.asyncti4.com/factions/sol.webp",
+      factionImage: "/images/factions/sol.webp",
       factionImageType: "IMAGE",
       color: "red",
       displayName: "null",
