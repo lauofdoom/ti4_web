@@ -2,6 +2,9 @@
   "permissions": {
     "allow": [
       "WebSearch"
+    ],
+    "additionalDirectories": [
+      "/async-ti4/src/main/java/ti4/listeners"
     ]
   }
 }
